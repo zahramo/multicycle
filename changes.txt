@@ -1,0 +1,10 @@
+ALU :
+    1. should have 2 bit control
+    2. no zero flag
+    3. 8 bit datas, n <= 8
+
+CONCATEVATOR :
+    1. different n inputs, so defult value ommited
+
+MUX2 :
+    1. just one signal : if 1 -> inp2 else inp2
