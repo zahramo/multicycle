@@ -15,7 +15,7 @@ module Memory (
     reg [WORD-1:0]memory[LENGTH-1:0];
 
     integer i;
-    reg [WORD-1:0]allData[2*LENGTH-1:0];
+    reg [WORD-1:0]allData[2*LENGTH-1:0]; //check
     initial begin
         $readmemb("datas.txt", allData);
         readData <= 0;
@@ -23,7 +23,7 @@ module Memory (
             memory[i] = 0;
         end
         for (i = 0; i < 2*LENGTH; i = i + 1) begin
-            memory[allData[i][9:0]] = allData[i+1];
+            memory[allData[i][9:0]] = allData[i+1]; //check
             i=i+1;
         end
     end
