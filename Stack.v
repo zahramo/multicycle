@@ -11,12 +11,13 @@ module Stack (
     parameter WORD = 8, LENGTH = 64, POINTERL = 6;
     input [WORD-1:0]d_in;
     input clk,
+    rst,
     push,
     pop,
     tos;
     output reg [WORD-1:0]d_out;
     reg [WORD-1:0]st[LENGTH-1:0];
-    reg [POINTERL-1:0]stackPointer
+    reg [POINTERL-1:0]stackPointer;
 
     always @(posedge clk, posedge rst) begin
         if (rst) stackPointer <= {(POINTERL){1'b0}};
