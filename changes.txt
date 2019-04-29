@@ -8,3 +8,8 @@ CONCATEVATOR :
 
 MUX2 :
     1. just one signal : if 1 -> inp2 else inp2
+
+MEMORY :
+    1. used dataMemory
+    2. name changed (important!)
+    3. should be 32*8, 5 bit address
