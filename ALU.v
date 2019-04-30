@@ -10,7 +10,7 @@ module ALU (
     input [1:0]func;
     output [n-1:0]out;
 
-    wire [2:0] ADD = 3'b00, SUB = 3'b01, 
+    parameter  ADD = 3'b00, SUB = 3'b01, 
                AND = 3'b10, NOT = 3'b11;
 
     assign out = (func == ADD) ? inp1 + inp2 :
