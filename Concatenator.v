@@ -4,8 +4,8 @@ module Concatenator (
     concatPart,
     out
     );
-    parameter NINP;
-    parameter NCONCATPART;
+    parameter NINP = 5;
+    parameter NCONCATPART = 3;
     input [NINP-1:0]inp;
     input [NCONCATPART-1:0] concatPart;
     output [NCONCATPART+NINP-1:0]out;
