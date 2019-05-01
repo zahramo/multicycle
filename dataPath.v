@@ -56,7 +56,7 @@ module DP(
     .clk(clk),
     .rst(rst),
     .ld(pcLd),
-    .clr(0), //ok?
+    .clr(1'b0),
     .inp(pcIn),
     .out(pcOut)
     );
@@ -80,7 +80,7 @@ module DP(
     .clk(clk),
     .rst(rst),
     .ld(IRWrite),
-    .clr(0), //ok?
+    .clr(1'b0),
     .inp(data),
     .out(IRreg)
     );
@@ -89,7 +89,7 @@ module DP(
     .clk(clk),
     .rst(rst),
     .ld(1'b1),
-    .clr(0), //ok?
+    .clr(1'b0),
     .inp(data),
     .out(MDRreg)
     );
@@ -115,7 +115,7 @@ module DP(
     .clk(clk),
     .rst(rst),
     .ld(LdA),
-    .clr(0), //ok?
+    .clr(1'b0),
     .inp(dOut),
     .out(Aout)
     );
@@ -124,7 +124,7 @@ module DP(
     .clk(clk),
     .rst(rst),
     .ld(LdB),
-    .clr(0), //ok?
+    .clr(1'b0),
     .inp(dOut),
     .out(Bout)
     );
@@ -133,7 +133,7 @@ module DP(
     .clk(clk),
     .rst(rst),
     .ld(1'b1),
-    .clr(0), //ok?
+    .clr(1'b0),
     .inp(dOut),
     .out(Zout)
     );
@@ -163,7 +163,7 @@ module DP(
     .clk(clk),
     .rst(rst),
     .ld(1'b1),
-    .clr(0), //ok?
+    .clr(1'b0),
     .inp(alu),
     .out(aluReg)
     );
@@ -175,7 +175,7 @@ module DP(
     );
 
     assign pcLd = (zero & PCWriteCond)| PCWrite;
-    assign zero = (Zout == 8'b00000000)?1'b1:1'b0; //correct?
+    assign zero = (Zout == 8'b00000000)?1'b1:1'b0;
     assign OPC = IRreg[7:5];
 
     endmodule
