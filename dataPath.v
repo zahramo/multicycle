@@ -175,7 +175,7 @@ module DP(
     );
 
     assign pcLd = (zero & PCWriteCond)| PCWrite;
-    assign zero = Zout ^ 8'b00000000; //correct?
+    assign zero = (Zout == 8'b00000000)?1'b1:1'b0; //correct?
     assign OPC = IRreg[7:5];
 
     endmodule
