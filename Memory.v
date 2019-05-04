@@ -23,7 +23,7 @@ module Memory (
             memory[i] = 0;
         end
         for (i = 0; i < 2*LENGTH; i = i + 1) begin
-            memory[allData[i][9:0]] = allData[i+1]; //check
+            memory[allData[i][ADDRESSL-1:0]] = allData[i+1]; //check
             i=i+1;
         end
     end

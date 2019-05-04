@@ -123,7 +123,8 @@ module CU(
             if (OPC == JMP) ns <= 4'b0010; //2
             else if (OPC == JZ) ns <= 4'b0011; //3
             else if (OPC == PUSH) ns <= 4'b0100; //4
-            else ns <= 4'b0110; //6
+            else if (OPC == POP) ns <= 4'b0110; //6
+            else ns <= 4'b0001; //change
             end
         2: ns <= 4'b0; //0
         3: ns <= 4'b0; //0
