@@ -46,7 +46,7 @@ module DP(
    	wire zero, pcLd;
 
    	mux2 #(5) m1 (
-    .sel(pcSrc),
+    .sel(PCSrc),
     .inp1(alu),
     .inp2(IRreg[4:0]),
     .out(pcIn)
@@ -105,8 +105,8 @@ module DP(
     .d_in(dIn),
     .clk(clk),
     .rst(rst),
-    .push(push),
-    .pop(pop),
+    .push(Push),
+    .pop(Pop),
     .tos(tos),
     .d_out(dOut)
     );
@@ -148,7 +148,7 @@ module DP(
     mux2 #(8) m5 (
     .sel(SrcB),
     .inp1(Bout),
-    .inp2(1'b1),
+    .inp2(8'b00000001),
     .out(Bin)
     );
 

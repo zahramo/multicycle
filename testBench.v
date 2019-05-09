@@ -10,8 +10,8 @@ module TestBench ();
     always #CLK clk = ~clk;
     initial begin 
         #(CLK) rst = 1;
-        #(CLK) rst = 0;
-        #(60*CLK)
+        #(3*CLK) rst = 0;
+        #(313*CLK)
         $stop;
     end
 

@@ -41,11 +41,13 @@ module CU(
     MtoS;
     output reg [1:0] AluOP;
 
-    reg ps, ns;
+    reg [3:0]ps, ns;
 
     parameter  ADD  = 2'b00 , PUSH = 3'b100,
                JMP  = 3'b110, NOT  = 3'b011,
-               JZ   = 3'b111, POP  = 3'b101;
+               JZ   = 3'b111, POP  = 3'b101,
+               ADDO = 3'b000, SUBO = 3'b001,
+               ANDO = 3'b010;
 
     always @(posedge clk, posedge rst)begin
       if(rst) ps <= 4'b0;
@@ -90,14 +92,20 @@ module CU(
             PCSrc = 1;
             PCWriteCond = 1;
             end
-        4:  IorD = 1;
+        4:  begin
+            IorD = 1;
+            memRead = 1;
+            end
         5:  begin
             MtoS = 1;
             Push = 1;
             end
         6:  Pop = 1;
         7:  LdA = 1;
-        8:  memWrite = 1;
+        8:  begin
+            memWrite = 1;
+            IorD = 1;
+            end
         9:  begin
             AluOP = OPC[1:0];
             SrcA = 0;
@@ -116,14 +124,14 @@ module CU(
         endcase
     end
 
-    always @(ps, OPC)begin
+    always @(ps, OPC, posedge clk)begin
         case(ps)
         0: ns <= 4'b0001; //1
         1:  begin
             if (OPC == JMP) ns <= 4'b0010; //2
             else if (OPC == JZ) ns <= 4'b0011; //3
             else if (OPC == PUSH) ns <= 4'b0100; //4
-            else if (OPC == POP) ns <= 4'b0110; //6
+            else if (OPC == POP || OPC == NOT || OPC == ADDO || OPC == ANDO || OPC == SUBO) ns <= 4'b0110; //6
             else ns <= 4'b0001; //change
             end
         2: ns <= 4'b0; //0
