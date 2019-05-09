@@ -15,15 +15,12 @@ module Memory (
     reg [WORD-1:0]memory[LENGTH-1:0];
 
     integer i;
-    reg [WORD-1:0]allData[2*LENGTH-1:0]; //check
+    reg [WORD-1:0]allData[2*LENGTH-1:0];
     initial begin
         $readmemb("datas.txt", allData);
         readData <= 0;
-        // for (i = 0; i < LENGTH; i = i + 1) begin
-        //     memory[i] = 0;
-        // end
         for (i = 0; i < 2*LENGTH; i = i + 1) begin
-            memory[allData[i][ADDRESSL-1:0]] = allData[i+1]; //check
+            memory[allData[i][ADDRESSL-1:0]] = allData[i+1];
             i=i+1;
         end
     end

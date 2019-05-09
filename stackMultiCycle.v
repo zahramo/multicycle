@@ -21,7 +21,7 @@ wire IorD,
     PCWriteCond,
     MtoS;
 
-wire[2:0] OPC;  // change
+wire[2:0] OPC;
 wire[1:0] AluOP;
 
 	DP dp(

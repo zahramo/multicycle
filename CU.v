@@ -63,7 +63,7 @@ module CU(
         SrcB = 0;
         LdA = 0;
         LdB = 0;
-        AluOP = 0; //CHECK
+        AluOP = 0;
         PCWrite = 0;
         PCSrc = 0;
         tos = 0;
@@ -126,30 +126,30 @@ module CU(
 
     always @(ps, OPC, posedge clk)begin
         case(ps)
-        0: ns <= 4'b0001; //1
+        0: ns <= 4'b0001; 
         1:  begin
-            if (OPC == JMP) ns <= 4'b0010; //2
-            else if (OPC == JZ) ns <= 4'b0011; //3
-            else if (OPC == PUSH) ns <= 4'b0100; //4
-            else if (OPC == POP || OPC == NOT || OPC == ADDO || OPC == ANDO || OPC == SUBO) ns <= 4'b0110; //6
-            else ns <= 4'b0001; //change
+            if (OPC == JMP) ns <= 4'b0010; 
+            else if (OPC == JZ) ns <= 4'b0011; 
+            else if (OPC == PUSH) ns <= 4'b0100; 
+            else if (OPC == POP || OPC == NOT || OPC == ADDO || OPC == ANDO || OPC == SUBO) ns <= 4'b0110; 
+            else ns <= 4'b0001;
             end
-        2: ns <= 4'b0; //0
-        3: ns <= 4'b0; //0
-        4: ns <= 4'b0101; //5
-        5: ns <= 4'b0; //0
-        6: ns <= 4'b0111; //7
+        2: ns <= 4'b0; 
+        3: ns <= 4'b0; 
+        4: ns <= 4'b0101; 
+        5: ns <= 4'b0; 
+        6: ns <= 4'b0111; 
         7:  begin
-            if (OPC == POP) ns <= 4'b1000; //8
-            else if (OPC == NOT) ns <= 4'b1001; //9
-            else ns <= 4'b1010; //10
+            if (OPC == POP) ns <= 4'b1000; 
+            else if (OPC == NOT) ns <= 4'b1001; 
+            else ns <= 4'b1010; 
             end
-        8: ns <= 4'b0; //0
-        9: ns <= 4'b1101; //13
-        10: ns <= 4'b1011; //11
-        11: ns <= 4'b1100; //12
-        12: ns <= 4'b1101; //13
-        13: ns <= 4'b0; //0
+        8: ns <= 4'b0; 
+        9: ns <= 4'b1101; 
+        10: ns <= 4'b1011; 
+        11: ns <= 4'b1100; 
+        12: ns <= 4'b1101; 
+        13: ns <= 4'b0; 
         default:ns<=ns;
         endcase
     end
